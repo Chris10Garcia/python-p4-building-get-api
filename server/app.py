@@ -23,14 +23,14 @@ def index():
 def games():
     games = []
     for game in Game.query.all():
-        game_dict = {
-            "title": game.title,
-            "genre": game.genre,
-            "platform": game.platform,
-            "price": game.price,
-            "id": game.id,
-        }
-        # game_dict = game.to_dict()
+        # game_dict = {
+        #     "title": game.title,
+        #     "genre": game.genre,
+        #     "platform": game.platform,
+        #     "price": game.price,
+        #     "id": game.id,
+        # }
+        game_dict = game.to_dict()
         games.append(game_dict)
 
     # response = make_response(
@@ -39,7 +39,7 @@ def games():
     # )
 
     response = make_response(
-        games,
+        jsonify(games),
         200,
         {"Content-Type": "application/json"}
     )
